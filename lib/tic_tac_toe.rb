@@ -12,6 +12,7 @@ end
 
 def player_move(board, index, marker)
  board[index] = marker
+ end
   if board[index] == "" || board[index] == " " || board[index] == nil
     return false
   else
