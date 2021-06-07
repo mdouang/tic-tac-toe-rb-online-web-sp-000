@@ -18,7 +18,8 @@ def move(board, index, marker)
     return true
   end
 end
-def position_taken?
+def position_taken?(board, index)
+  !(board[index].nil? || board[index] == " ")
 end
 def valid_move?(board, index)
   if !position_taken?(board, index) && (index).between?(0,8)
