@@ -10,16 +10,17 @@ def input_to_index(user_input)
   user_input.to_i - 1
 end
 
-def player_move(board, index, marker)
+def move(board, index, marker)
  board[index] = marker
-end
-  if board[index] == "" || board[index] == " " || board[index] == nil
+ if board[index] == "" || board[index] == " " || board[index] == nil
     return false
   else
     return true
   end
 end
-
+def position_taken?(board, index)
+  !(board[index].nil? || board[index] == " ")
+end
 def valid_move?(board, index)
   if !position_taken?(board, index) && (index).between?(0,8)
     return true
@@ -36,7 +37,7 @@ def turn(board)
   user_input = gets.strip
   index = input_to_index(user_input)
   if valid_move?(board, index)
-    player_move(board, index, current_player(board))
+    move(board, index, current_player(board))
     display_board(board)
   else
     turn(board)
